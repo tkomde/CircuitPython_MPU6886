@@ -1,4 +1,4 @@
-# Circuitpython_MPU6886
+# CircuitPython_MPU6886
 
 ## Introduction
 
