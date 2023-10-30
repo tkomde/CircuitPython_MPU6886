@@ -107,28 +107,6 @@ class GyroRange:  # pylint: disable=too-few-public-methods
     RANGE_2000_DPS = 3  # +/- 2000 deg/s
 
 
-class Bandwidth:  # pylint: disable=too-few-public-methods
-    """Allowed values for :py:attr:`filter_bandwidth`.
-
-    * :py:attr:`Bandwidth.BAND_260_HZ`
-    * :py:attr:`Bandwidth.BAND_184_HZ`
-    * :py:attr:`Bandwidth.BAND_94_HZ`
-    * :py:attr:`Bandwidth.BAND_44_HZ`
-    * :py:attr:`Bandwidth.BAND_21_HZ`
-    * :py:attr:`Bandwidth.BAND_10_HZ`
-    * :py:attr:`Bandwidth.BAND_5_HZ`
-
-    """
-
-    BAND_260_HZ = 0  # Docs imply this disables the filter
-    BAND_184_HZ = 1  # 184 Hz
-    BAND_94_HZ = 2  # 94 Hz
-    BAND_44_HZ = 3  # 44 Hz
-    BAND_21_HZ = 4  # 21 Hz
-    BAND_10_HZ = 5  # 10 Hz
-    BAND_5_HZ = 6  # 5 Hz
-
-
 class Rate:  # pylint: disable=too-few-public-methods
     """Allowed values for :py:attr:`cycle_rate`.
 
@@ -187,7 +165,6 @@ class MPU6886:
         self.reset()
 
         self._sample_rate_divisor = 0
-        self._filter_bandwidth = Bandwidth.BAND_260_HZ
         self._gyro_range = GyroRange.RANGE_500_DPS
         self._accel_range = Range.RANGE_2_G
         sleep(0.100)
@@ -326,18 +303,6 @@ class MPU6886:
         if (value < 0) or (value > 3):
             raise ValueError("accelerometer_range must be a Range")
         self._accel_range = value
-        sleep(0.01)
-
-    @property
-    def filter_bandwidth(self) -> int:
-        """The bandwidth of the gyroscope Digital Low Pass Filter. Must be a `GyroRange`"""
-        return self._filter_bandwidth
-
-    @filter_bandwidth.setter
-    def filter_bandwidth(self, value: int) -> None:
-        if (value < 0) or (value > 6):
-            raise ValueError("filter_bandwidth must be a Bandwidth")
-        self._filter_bandwidth = value
         sleep(0.01)
 
     @property
