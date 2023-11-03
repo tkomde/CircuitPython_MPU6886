@@ -1,4 +1,9 @@
-#Sample script for MPU6886
+# SPDX-FileCopyrightText: 2017 Scott Shawcroft, written for Adafruit Industries
+# SPDX-FileCopyrightText: Copyright (c) 2023 Taiki Komoda for JINS Inc.
+#
+# SPDX-License-Identifier: Unlicense
+#
+# Sample script for MPU6886
 
 import time
 import board
