@@ -89,7 +89,7 @@ Usage Example
 =============
 
 .. code-block:: python3
-    
+
     import time
     import board
     import mpu6886
