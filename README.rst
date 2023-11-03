@@ -36,7 +36,7 @@ Installing from PyPI
 =====================
 .. note:: This library is not available on PyPI yet. Install documentation is included
    as a standard element. Stay tuned for PyPI availability!
-   
+
 
 Installing to a Connected CircuitPython Device with Circup
 ==========================================================
