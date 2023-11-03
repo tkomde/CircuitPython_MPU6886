@@ -17,8 +17,6 @@ CircuitPython helper library for the MPU6886 6-DoF Accelerometer and Gyroscope
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-CircuitPython helper library for the MPU6886 6-DoF Accelerometer and Gyroscope
-
 
 Dependencies
 =============
