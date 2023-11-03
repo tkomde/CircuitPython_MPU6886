@@ -260,7 +260,7 @@ class MPU6886:
 
     @property
     def gyro(self) -> Tuple[float, float, float]:
-        """Gyroscope X, Y, and Z axis data in :math:`º/s`"""
+        """Gyroscope X, Y, and Z axis data in :math:`rad/s`"""
         raw_data = self._raw_gyro_data
         raw_x = raw_data[0][0]
         raw_y = raw_data[1][0]
