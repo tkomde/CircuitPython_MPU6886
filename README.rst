@@ -25,6 +25,8 @@ Dependencies
 This driver depends on:
 
 * `Adafruit CircuitPython <https://github.com/adafruit/circuitpython>`_
+* `Bus Device <https://github.com/adafruit/Adafruit_CircuitPython_BusDevice>`_
+* `Register <https://github.com/adafruit/Adafruit_CircuitPython_Register>`_
 
 Please ensure all dependencies are available on the CircuitPython filesystem.
 This is easily achieved by downloading
@@ -34,6 +36,7 @@ or individual libraries can be installed using
 
 Installing from PyPI
 =====================
+
 .. note:: This library is not available on PyPI yet. Install documentation is included
    as a standard element. Stay tuned for PyPI availability!
 
