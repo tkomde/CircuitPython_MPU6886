@@ -68,14 +68,14 @@ STANDARD_GRAVITY = 9.80665
 class ClockSource:  # pylint: disable=too-few-public-methods
     """Allowed values for :py:attr:`clock_source`.
 
-    * :py:attr:'ClockSource.CLKSEL_INTERNAL_8MHz
-    * :py:attr:'ClockSource.CLKSEL_INTERNAL_X
-    * :py:attr:'ClockSource.CLKSEL_INTERNAL_Y
-    * :py:attr:'ClockSource.CLKSEL_INTERNAL_Z
-    * :py:attr:'ClockSource.CLKSEL_EXTERNAL_32
-    * :py:attr:'ClockSource.CLKSEL_EXTERNAL_19
-    * :py:attr:'ClockSource.CLKSEL_RESERVED
-    * :py:attr:'ClockSource.CLKSEL_STOP
+    * :py:attr:`ClockSource.CLKSEL_INTERNAL_8MHz`
+    * :py:attr:`ClockSource.CLKSEL_INTERNAL_X`
+    * :py:attr:`ClockSource.CLKSEL_INTERNAL_Y`
+    * :py:attr:`ClockSource.CLKSEL_INTERNAL_Z`
+    * :py:attr:`ClockSource.CLKSEL_EXTERNAL_32`
+    * :py:attr:`ClockSource.CLKSEL_EXTERNAL_19`
+    * :py:attr:`ClockSource.CLKSEL_RESERVED`
+    * :py:attr:`ClockSource.CLKSEL_STOP`
     """
 
     CLKSEL_INTERNAL_8MHz = 0  # Internal 8MHz oscillator
@@ -157,7 +157,7 @@ class MPU6886:
         .. code-block:: python
 
             i2c = board.I2C()  # uses board.SCL and board.SDA
-            mpu = mpu6886.MPU6886(i2c)
+            sensor = mpu6886.MPU6886(i2c)
 
         Now you have access to the :attr:`acceleration`, :attr:`gyro`
         and :attr:`temperature` attributes
