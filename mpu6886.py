@@ -200,10 +200,10 @@ class MPU6886:
     @classmethod
     def reset(cls) -> None:
         """Reinitialize the sensor"""
-        #Touble...
-        #self._reset = True
-        #while self._reset is True:
-        #sleep(0.1)
+        # Touble...
+        # self._reset = True
+        # while self._reset is True:
+        # sleep(0.1)
 
         sleep(0.1)
 
