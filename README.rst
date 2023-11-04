@@ -75,9 +75,11 @@ Usage Example
     mpu = mpu6886.MPU6886(i2c)
 
     while True:
-        print("Acceleration: X:%.2f, Y: %.2f, Z: %.2f m/s^2"%(mpu.acceleration))
-        print("Gyro X:%.2f, Y: %.2f, Z: %.2f degrees/s"%(mpu.gyro))
-        print("Temperature: %.2f C"%mpu.temperature)
+        ac = mpu.acceleration
+        gy = mpu.gyro
+        print(f"Acceleration: X:{ac[0]:.2f}, Y:{ac[1]:.2f}, Z:{ac[2]:.2f} m/s^2")
+        print(f"Gyro X:{gy[0]:.2f}, Y:{gy[1]:.2f}, Z:{gy[2]:.2f} rad/s")
+        print(f"Temperature: {mpu.temperature:.2f} C")
         print("")
         time.sleep(1)
 
