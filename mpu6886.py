@@ -78,14 +78,14 @@ class ClockSource:  # pylint: disable=too-few-public-methods
     * :py:attr:`ClockSource.CLKSEL_STOP`
     """
 
-    CLKSEL_INTERNAL_8MHz = const(0) # Internal 8MHz oscillator
-    CLKSEL_INTERNAL_X = const(1) # PLL with X Axis gyroscope reference
-    CLKSEL_INTERNAL_Y = const(2) # PLL with Y Axis gyroscope reference
-    CLKSEL_INTERNAL_Z = const(3) # PLL with Z Axis gyroscope reference
-    CLKSEL_EXTERNAL_32 = const(4) # External 32.768 kHz reference
-    CLKSEL_EXTERNAL_19 = const(5) # External 19.2 MHz reference
-    CLKSEL_RESERVED = const(6) # Reserved
-    CLKSEL_STOP = const(7) # Stops the clock, constant reset mode
+    CLKSEL_INTERNAL_8MHz = const(0)  # Internal 8MHz oscillator
+    CLKSEL_INTERNAL_X = const(1)  # PLL with X Axis gyroscope reference
+    CLKSEL_INTERNAL_Y = const(2)  # PLL with Y Axis gyroscope reference
+    CLKSEL_INTERNAL_Z = const(3)  # PLL with Z Axis gyroscope reference
+    CLKSEL_EXTERNAL_32 = const(4)  # External 32.768 kHz reference
+    CLKSEL_EXTERNAL_19 = const(5)  # External 19.2 MHz reference
+    CLKSEL_RESERVED = const(6)  # Reserved
+    CLKSEL_STOP = const(7)  # Stops the clock, constant reset mode
 
 
 class Range:  # pylint: disable=too-few-public-methods
@@ -98,10 +98,10 @@ class Range:  # pylint: disable=too-few-public-methods
 
     """
 
-    RANGE_2_G = const(0) # +/- 2g (default value)
-    RANGE_4_G = const(1) # +/- 4g
-    RANGE_8_G = const(2) # +/- 8g
-    RANGE_16_G = const(3) # +/- 16g
+    RANGE_2_G = const(0)  # +/- 2g (default value)
+    RANGE_4_G = const(1)  # +/- 4g
+    RANGE_8_G = const(2)  # +/- 8g
+    RANGE_16_G = const(3)  # +/- 16g
 
 
 class GyroRange:  # pylint: disable=too-few-public-methods
@@ -114,10 +114,10 @@ class GyroRange:  # pylint: disable=too-few-public-methods
 
     """
 
-    RANGE_250_DPS = const(0) # +/- 250 deg/s (default value)
-    RANGE_500_DPS = const(1) # +/- 500 deg/s
-    RANGE_1000_DPS = const(2) # +/- 1000 deg/s
-    RANGE_2000_DPS = const(3) # +/- 2000 deg/s
+    RANGE_250_DPS = const(0)  # +/- 250 deg/s (default value)
+    RANGE_500_DPS = const(1)  # +/- 500 deg/s
+    RANGE_1000_DPS = const(2)  # +/- 1000 deg/s
+    RANGE_2000_DPS = const(3)  # +/- 2000 deg/s
 
 
 class Rate:  # pylint: disable=too-few-public-methods
@@ -130,10 +130,10 @@ class Rate:  # pylint: disable=too-few-public-methods
 
     """
 
-    CYCLE_1_25_HZ = const(0) # 1.25 Hz
-    CYCLE_5_HZ = const(1) # 5 Hz
-    CYCLE_20_HZ = const(2) # 20 Hz
-    CYCLE_40_HZ = const(3) # 40 Hz
+    CYCLE_1_25_HZ = const(0)  # 1.25 Hz
+    CYCLE_5_HZ = const(1)  # 5 Hz
+    CYCLE_20_HZ = const(2)  # 20 Hz
+    CYCLE_40_HZ = const(3)  # 40 Hz
 
 
 class MPU6886:
