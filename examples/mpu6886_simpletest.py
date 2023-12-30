@@ -14,6 +14,11 @@ import mpu6886
 i2c = I2C(board.IMU_SCL, board.IMU_SDA)
 mpu = mpu6886.MPU6886(i2c)
 
+mpu.gyro_range = 1
+time.sleep(0.05)
+mpu.accelerometer_range = 1
+time.sleep(0.05)
+
 while True:
     ac = mpu.acceleration
     gy = mpu.gyro

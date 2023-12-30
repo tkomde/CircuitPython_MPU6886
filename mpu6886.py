@@ -29,8 +29,8 @@ __repo__ = "https://github.com/jins-tkomoda/CircuitPython_MPU6886.git"
 
 from math import radians
 from time import sleep
-from adafruit_register.i2c_struct import UnaryStruct, ROUnaryStruct
-from adafruit_register.i2c_struct_array import StructArray
+from micropython import const
+from adafruit_register.i2c_struct import UnaryStruct, ROUnaryStruct, Struct
 from adafruit_register.i2c_bit import RWBit
 from adafruit_register.i2c_bits import RWBits
 from adafruit_bus_device import i2c_device
@@ -41,26 +41,26 @@ try:
 except ImportError:
     pass
 
-_MPU6886_DEFAULT_ADDRESS = 0x68  # MPU6886 default i2c address w/ AD0 low
-_MPU6886_DEVICE_ID = 0x19  # The correct MPU6886_WHO_AM_I value
+_MPU6886_DEFAULT_ADDRESS = const(0x68)  # MPU6886 default i2c address w/ AD0 low
+_MPU6886_DEVICE_ID = const(0x19)  # The correct MPU6886_WHO_AM_I value
 
-_MPU6886_SELF_TEST_X = 0x0D  # Self test factory calibrated values register
-_MPU6886_SELF_TEST_Y = 0x0E  # Self test factory calibrated values register
-_MPU6886_SELF_TEST_Z = 0x0F  # Self test factory calibrated values register
-_MPU6886_SELF_TEST_A = 0x10  # Self test factory calibrated values register
-_MPU6886_SMPLRT_DIV = 0x19  # sample rate divisor register
-_MPU6886_CONFIG = 0x1A  # General configuration register @OK
-_MPU6886_GYRO_CONFIG = 0x1B  # Gyro specfic configuration register @OK
-_MPU6886_ACCEL_CONFIG = 0x1C  # Accelerometer specific configration register @OK
-_MPU6886_INT_PIN_CONFIG = 0x37  # Interrupt pin configuration register
-_MPU6886_ACCEL_OUT = 0x3B  # base address for sensor data reads
-_MPU6886_TEMP_OUT = 0x41  # Temperature data high byte register
-_MPU6886_GYRO_OUT = 0x43  # base address for sensor data reads
-_MPU6886_SIG_PATH_RESET = 0x68  # register to reset sensor signal paths
-_MPU6886_USER_CTRL = 0x6A  # FIFO and I2C Master control register
-_MPU6886_PWR_MGMT_1 = 0x6B  # Primary power/sleep control register @OK
-_MPU6886_PWR_MGMT_2 = 0x6C  # Secondary power/sleep control register
-_MPU6886_WHO_AM_I = 0x75  # Divice ID register
+_MPU6886_SELF_TEST_X = const(0x0D)  # Self test factory calibrated values register
+_MPU6886_SELF_TEST_Y = const(0x0E)  # Self test factory calibrated values register
+_MPU6886_SELF_TEST_Z = const(0x0F)  # Self test factory calibrated values register
+_MPU6886_SELF_TEST_A = const(0x10)  # Self test factory calibrated values register
+_MPU6886_SMPLRT_DIV = const(0x19)  # sample rate divisor register
+_MPU6886_CONFIG = const(0x1A)  # General configuration register @OK
+_MPU6886_GYRO_CONFIG = const(0x1B)  # Gyro specfic configuration register @OK
+_MPU6886_ACCEL_CONFIG = const(0x1C)  # Accelerometer specific configration register @OK
+_MPU6886_INT_PIN_CONFIG = const(0x37)  # Interrupt pin configuration register
+_MPU6886_ACCEL_OUT = const(0x3B)  # base address for sensor data reads
+_MPU6886_TEMP_OUT = const(0x41)  # Temperature data high byte register
+_MPU6886_GYRO_OUT = const(0x43)  # base address for sensor data reads
+_MPU6886_SIG_PATH_RESET = const(0x68)  # register to reset sensor signal paths
+_MPU6886_USER_CTRL = const(0x6A)  # FIFO and I2C Master control register
+_MPU6886_PWR_MGMT_1 = const(0x6B)  # Primary power/sleep control register @OK
+_MPU6886_PWR_MGMT_2 = const(0x6C)  # Secondary power/sleep control register
+_MPU6886_WHO_AM_I = const(0x75)  # Divice ID register
 
 STANDARD_GRAVITY = 9.80665
 
@@ -78,14 +78,14 @@ class ClockSource:  # pylint: disable=too-few-public-methods
     * :py:attr:`ClockSource.CLKSEL_STOP`
     """
 
-    CLKSEL_INTERNAL_8MHz = 0  # Internal 8MHz oscillator
-    CLKSEL_INTERNAL_X = 1  # PLL with X Axis gyroscope reference
-    CLKSEL_INTERNAL_Y = 2  # PLL with Y Axis gyroscope reference
-    CLKSEL_INTERNAL_Z = 3  # PLL with Z Axis gyroscope reference
-    CLKSEL_EXTERNAL_32 = 4  # External 32.768 kHz reference
-    CLKSEL_EXTERNAL_19 = 5  # External 19.2 MHz reference
-    CLKSEL_RESERVED = 6  # Reserved
-    CLKSEL_STOP = 7  # Stops the clock, constant reset mode
+    CLKSEL_INTERNAL_8MHz = const(0) # Internal 8MHz oscillator
+    CLKSEL_INTERNAL_X = const(1) # PLL with X Axis gyroscope reference
+    CLKSEL_INTERNAL_Y = const(2) # PLL with Y Axis gyroscope reference
+    CLKSEL_INTERNAL_Z = const(3) # PLL with Z Axis gyroscope reference
+    CLKSEL_EXTERNAL_32 = const(4) # External 32.768 kHz reference
+    CLKSEL_EXTERNAL_19 = const(5) # External 19.2 MHz reference
+    CLKSEL_RESERVED = const(6) # Reserved
+    CLKSEL_STOP = const(7) # Stops the clock, constant reset mode
 
 
 class Range:  # pylint: disable=too-few-public-methods
@@ -98,10 +98,10 @@ class Range:  # pylint: disable=too-few-public-methods
 
     """
 
-    RANGE_2_G = 0  # +/- 2g (default value)
-    RANGE_4_G = 1  # +/- 4g
-    RANGE_8_G = 2  # +/- 8g
-    RANGE_16_G = 3  # +/- 16g
+    RANGE_2_G = const(0) # +/- 2g (default value)
+    RANGE_4_G = const(1) # +/- 4g
+    RANGE_8_G = const(2) # +/- 8g
+    RANGE_16_G = const(3) # +/- 16g
 
 
 class GyroRange:  # pylint: disable=too-few-public-methods
@@ -114,10 +114,10 @@ class GyroRange:  # pylint: disable=too-few-public-methods
 
     """
 
-    RANGE_250_DPS = 0  # +/- 250 deg/s (default value)
-    RANGE_500_DPS = 1  # +/- 500 deg/s
-    RANGE_1000_DPS = 2  # +/- 1000 deg/s
-    RANGE_2000_DPS = 3  # +/- 2000 deg/s
+    RANGE_250_DPS = const(0) # +/- 250 deg/s (default value)
+    RANGE_500_DPS = const(1) # +/- 500 deg/s
+    RANGE_1000_DPS = const(2) # +/- 1000 deg/s
+    RANGE_2000_DPS = const(3) # +/- 2000 deg/s
 
 
 class Rate:  # pylint: disable=too-few-public-methods
@@ -130,10 +130,10 @@ class Rate:  # pylint: disable=too-few-public-methods
 
     """
 
-    CYCLE_1_25_HZ = 0  # 1.25 Hz
-    CYCLE_5_HZ = 1  # 5 Hz
-    CYCLE_20_HZ = 2  # 20 Hz
-    CYCLE_40_HZ = 3  # 40 Hz
+    CYCLE_1_25_HZ = const(0) # 1.25 Hz
+    CYCLE_5_HZ = const(1) # 5 Hz
+    CYCLE_20_HZ = const(2) # 20 Hz
+    CYCLE_40_HZ = const(3) # 40 Hz
 
 
 class MPU6886:
@@ -212,8 +212,8 @@ class MPU6886:
 
     _filter_bandwidth = RWBits(2, _MPU6886_CONFIG, 3)
 
-    _raw_accel_data = StructArray(_MPU6886_ACCEL_OUT, ">h", 3)
-    _raw_gyro_data = StructArray(_MPU6886_GYRO_OUT, ">h", 3)
+    _raw_accel_data = Struct(_MPU6886_ACCEL_OUT, ">hhh")
+    _raw_gyro_data = Struct(_MPU6886_GYRO_OUT, ">hhh")
     _raw_temp_data = ROUnaryStruct(_MPU6886_TEMP_OUT, ">h")
 
     _cycle = RWBit(_MPU6886_PWR_MGMT_1, 5)
@@ -236,9 +236,9 @@ class MPU6886:
     def acceleration(self) -> Tuple[float, float, float]:
         """Acceleration X, Y, and Z axis data in :math:`m/s^2`"""
         raw_data = self._raw_accel_data
-        raw_x = raw_data[0][0]
-        raw_y = raw_data[1][0]
-        raw_z = raw_data[2][0]
+        raw_x = raw_data[0]
+        raw_y = raw_data[1]
+        raw_z = raw_data[2]
 
         accel_range = self._accel_range
         accel_scale = 1
@@ -262,9 +262,9 @@ class MPU6886:
     def gyro(self) -> Tuple[float, float, float]:
         """Gyroscope X, Y, and Z axis data in :math:`rad/s`"""
         raw_data = self._raw_gyro_data
-        raw_x = raw_data[0][0]
-        raw_y = raw_data[1][0]
-        raw_z = raw_data[2][0]
+        raw_x = raw_data[0]
+        raw_y = raw_data[1]
+        raw_z = raw_data[2]
 
         gyro_scale = 1
         gyro_range = self._gyro_range
