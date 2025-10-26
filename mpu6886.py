@@ -29,14 +29,16 @@ __repo__ = "https://github.com/jins-tkomoda/CircuitPython_MPU6886.git"
 
 from math import radians
 from time import sleep
-from micropython import const
-from adafruit_register.i2c_struct import UnaryStruct, ROUnaryStruct, Struct
+
+from adafruit_bus_device import i2c_device
 from adafruit_register.i2c_bit import RWBit
 from adafruit_register.i2c_bits import RWBits
-from adafruit_bus_device import i2c_device
+from adafruit_register.i2c_struct import ROUnaryStruct, Struct, UnaryStruct
+from micropython import const
 
 try:
     from typing import Tuple
+
     from busio import I2C
 except ImportError:
     pass
@@ -181,9 +183,7 @@ class MPU6886:
         self._gyro_range = GyroRange.RANGE_500_DPS
         self._accel_range = Range.RANGE_2_G
         sleep(0.100)
-        self.clock_source = (
-            ClockSource.CLKSEL_INTERNAL_X
-        )  # set to use gyro x-axis as reference
+        self.clock_source = ClockSource.CLKSEL_INTERNAL_X  # set to use gyro x-axis as reference
         sleep(0.100)
         self.sleep = False
         sleep(0.010)
@@ -340,7 +340,5 @@ class MPU6886:
     def clock_source(self, value: int) -> None:
         """Select between Internal/External clock sources"""
         if value not in range(8):
-            raise ValueError(
-                "clock_source must be ClockSource value, integer from 0 - 7."
-            )
+            raise ValueError("clock_source must be ClockSource value, integer from 0 - 7.")
         self._clksel = value
